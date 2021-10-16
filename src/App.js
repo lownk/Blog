@@ -22,6 +22,7 @@ function App() {
   let [modal, modal변경] = useState(true);
   let [누른글정보, 누른글정보변경] = useState(0);
   let [입력값, 입력값변경] = useState("");
+  let [작성날짜, 작성날짜변경] = useState("2021. 10. 16");
 
   const 하트올리기 = (i) => {
     const newArr = 글정보.map((글) => {
@@ -51,7 +52,7 @@ function App() {
               <span onClick={() => 하트올리기(i)}> 💜</span>
               {글.하트}
             </h3>
-            <p>10월 13일 발행</p>
+            <p>{작성날짜} 발행</p>
             <hr />
           </div>
         );
@@ -83,7 +84,7 @@ function App() {
         열고 닫기
       </button>
       {modal === true ? (
-        <Modal 글정보={글정보} 누른글정보={누른글정보} />
+        <Modal 글정보={글정보} 누른글정보={누른글정보} 작성날짜={작성날짜} />
       ) : null}
     </div>
   );
@@ -93,7 +94,7 @@ const Modal = (props) => {
   return (
     <div className="modal">
       <h2>{props.글정보[props.누른글정보].글제목}</h2>
-      <p>날짜</p>
+      <p>{props.작성날짜} 발행</p>
       <p>상세내용</p>
     </div>
   );
